@@ -1,0 +1,26 @@
+
+测试文件
+
+#创建ssh key、配置git
+
+1. 设置username和email（github每次commit都会记录他们）
+
+```
+git config --global user.name "momoland"
+git config --global user.email "1457875509@qq.com"
+```
+
+2. 通过终端命令创建ssh key
+```
+ssh-keygen -t rsa -C "1457875509@qq.com"
+```
+3. 用cat命令查看，并复制里面的key
+```
+cd ~/.ssh
+ssh wangyu$ cat id_rsa.pub
+```
+4. 链接验证
+```
+ssh -T git@github.com 
+
+```
