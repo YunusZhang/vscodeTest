@@ -6,13 +6,13 @@
 1. 设置username和email（github每次commit都会记录他们）
 
 ```
-git config --global user.name "momoland"
-git config --global user.email "1457875509@qq.com"
+git config --global user.name "yourname"
+git config --global user.email "youremail@qq.com"
 ```
 
 2. 通过终端命令创建ssh key
 ```
-ssh-keygen -t rsa -C "1457875509@qq.com"
+ssh-keygen -t rsa -C "youremail@qq.com"
 ```
 3. 用cat命令查看，并复制里面的key
 ```
