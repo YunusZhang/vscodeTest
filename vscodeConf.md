@@ -23,7 +23,7 @@ ssh-keygen -t rsa -C "youremail@qq.com"
 3. 用cat命令查看，并复制里面的key
 ```
 cd ~/.ssh
-ssh wangyu$ cat id_rsa.pub
+ssh yourusername$ cat id_rsa.pub
 ```
 4. 链接验证
 ```
