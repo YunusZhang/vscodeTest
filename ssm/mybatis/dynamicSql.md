@@ -1,19 +1,19 @@
 <!-- TOC -->
 
-- [第5章 MyBatis 动态SQL](#第5章-mybatis-动态sql)
-    - [5.1 MyBatis动态SQL简介](#51-mybatis动态sql简介)
-    - [5.2 if  where](#52-if -where)
-    - [5.3 trim](#53-trim)
-    - [5.4 set](#54-set)
-    - [5.5 choose(when、otherwise)](#55-choosewhenotherwise)
-    - [5.6 foreach](#56-foreach)
-    - [5.7 sql](#57-sql)
+- [第4章 MyBatis 动态SQL](#%e7%ac%ac4%e7%ab%a0-mybatis-%e5%8a%a8%e6%80%81sql)
+	- [4.1 MyBatis动态SQL简介](#41-mybatis%e5%8a%a8%e6%80%81sql%e7%ae%80%e4%bb%8b)
+	- [4.2 if  where](#42-if-where)
+	- [4.3 trim](#43-trim)
+	- [4.4 set](#44-set)
+	- [4.5 choose(when、otherwise)](#45-choosewhenotherwise)
+	- [4.6 foreach](#46-foreach)
+	- [4.7 sql](#47-sql)
 
 <!-- /TOC --> 
 
-#第5章 MyBatis 动态SQL
+# 第4章 MyBatis 动态SQL
 
-##5.1 MyBatis动态SQL简介
+## 4.1 MyBatis动态SQL简介
 	• 动态 SQL是MyBatis强大特性之一。极大的简化我们拼装SQL的操作
 	• 动态 SQL 元素和使用 JSTL 或其他类似基于 XML 的文本处理器相似
 	• MyBatis 采用功能强大的基于 OGNL 的表达式来简化操作
@@ -32,7 +32,7 @@ foreach
 逻辑运算符： in,not in,>,>=,<,<=,==,!=
 注意：xml中特殊符号如”,>,<等这些都需要使用转义字符
 
-##5.2 if  where
+## 4.2 if  where
 	• If用于完成简单的判断.
 	• Where用于解决SQL语句中where关键字以及条件中第一个and或者or的问题 
 
@@ -58,7 +58,7 @@ foreach
 
 ```
 
-##5.3 trim 
+## 4.3 trim 
 	• Trim 可以在条件判断完的SQL语句前后 添加或者去掉指定的字符
 prefix: 添加前缀
 prefixOverrides: 去掉前缀
@@ -88,7 +88,7 @@ gender = #{gender}
 
 ```
 
-##5.4 set 
+## 4.4 set 
 	• set 主要是用于解决修改操作中SQL语句中可能多出逗号的问题
 ```xml
 	<update id="updateEmpByConditionSet">
@@ -109,7 +109,7 @@ gender = #{gender}
 
 ```
 
-##5.5 choose(when、otherwise) 
+## 4.5 choose(when、otherwise) 
 	• choose 主要是用于分支判断，类似于java中的switch case,只会满足所有分支中的一个
 ```xml
 	<select id="getEmpsByConditionChoose" resultType="com.atguigu.mybatis.beans.Employee">
@@ -134,7 +134,7 @@ gender = #{gender}
 
 ```
 
-##5.6 foreach 
+## 4.6 foreach 
 	• foreach 主要用户循环迭代
 collection: 要迭代的集合
 item: 当前从集合中迭代出的元素
@@ -156,7 +156,7 @@ select id , last_name, email ,gender from tbl_employee where  id in 
 
 ```
 
-##5.7 sql 
+## 4.7 sql 
 	• sql 标签是用于抽取可重用的sql片段，将相同的，使用频繁的SQL片段抽取出来，单独定义，方便多次引用.
 	• 抽取SQL: 
 ```xml
