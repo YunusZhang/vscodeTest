@@ -230,6 +230,7 @@ https://help.aliyun.com/document_detail/102512.html?spm=a2c40.aliyun_maven_repo.
 
 https://www.jianshu.com/p/dddc8b8c5c74
 上面是更新本地已有的索引，这样在编写pom文件的时候，可以自动提示，但如果我们能够把整个中央仓库的索引更新下来，那不是更方便啦
+
 1）更新远程仓库索引的注意事项
 * 保持网络状态良好。注意，由于中央仓库位于国外，而且索引文件大概八百多兆，请确定网络条件良好，否则很容易更新失败
 * 在更新时，会更新失败，提示找不到  nexus-maven-repository-index.properties ；原因：自己本地maven配置了阿里云私服，而最近阿里云私服改版，暂时没提供nexus-maven-repository-index.properties文件，而idea虽然显示的是中央仓库的地址但是还是走的阿里云私服，所以更新不下来，将自己maven的setting文件中的mirror全部注释掉，然后更新，成功。
@@ -246,7 +247,8 @@ https://www.jianshu.com/p/dddc8b8c5c74
     </mirror>
   ```
 
-  3）具体步骤
+3）具体步骤
+
 1、下载最新maven bin包，及环境变量配置
 2、创建本地仓库，修改IDEA Setting，---File--- setting ---Maven ----各个路径及勾选修改
 3、修改maven包下conf---- setting.xml相关配置，setting.xml
