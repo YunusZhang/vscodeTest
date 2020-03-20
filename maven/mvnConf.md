@@ -7,6 +7,7 @@
       - [2.1.1 idea基础环境配置](#211-idea%e5%9f%ba%e7%a1%80%e7%8e%af%e5%a2%83%e9%85%8d%e7%bd%ae)
       - [2.1.2 pom.xml文件导包的时候不会自动提示](#212-pomxml%e6%96%87%e4%bb%b6%e5%af%bc%e5%8c%85%e7%9a%84%e6%97%b6%e5%80%99%e4%b8%8d%e4%bc%9a%e8%87%aa%e5%8a%a8%e6%8f%90%e7%a4%ba)
       - [2.1.3 maven仓库索引](#213-maven%e4%bb%93%e5%ba%93%e7%b4%a2%e5%bc%95)
+      - [2.1.4 maven仓库镜像](#214-maven%e4%bb%93%e5%ba%93%e9%95%9c%e5%83%8f)
 
 <!-- /TOC -->
 # maven配置的坑
@@ -218,7 +219,7 @@ https://www.cnblogs.com/lly001/p/9732485.html
 https://blog.csdn.net/ZZQ928000/article/details/89980916
 
 
-####2.1.3 maven仓库镜像
+#### 2.1.4 maven仓库镜像
 参考文章：
 https://www.cnblogs.com/shaoke123/p/5035924.html
 https://my.oschina.net/aiguozhe/blog/101537?fromerr=kOXkYkdf
@@ -228,4 +229,41 @@ https://bbs.csdn.net/topics/395031552
 https://help.aliyun.com/document_detail/102512.html?spm=a2c40.aliyun_maven_repo.0.0.36183054mZ1uA6
 
 https://www.jianshu.com/p/dddc8b8c5c74
+上面是更新本地已有的索引，这样在编写pom文件的时候，可以自动提示，但如果我们能够把整个中央仓库的索引更新下来，那不是更方便啦
+1）更新远程仓库索引的注意事项
+* 保持网络状态良好。注意，由于中央仓库位于国外，而且索引文件大概八百多兆，请确定网络条件良好，否则很容易更新失败
+* 在更新时，会更新失败，提示找不到  nexus-maven-repository-index.properties ；原因：自己本地maven配置了阿里云私服，而最近阿里云私服改版，暂时没提供nexus-maven-repository-index.properties文件，而idea虽然显示的是中央仓库的地址但是还是走的阿里云私服，所以更新不下来，将自己maven的setting文件中的mirror全部注释掉，然后更新，成功。
+* 关闭本地防火墙，不然会各种下载失败
+  
+2）配置国内镜像
+* 选择阿里云的镜像，在settings.xml文件中添加(注意：要在更新完远程仓库索引之后再添加国内镜像)
+  ```xml
+  <mirror>
+      <id>aliyunmaven</id>
+      <mirrorOf>*</mirrorOf>
+      <name>阿里云公共仓库</name>
+      <url>https://maven.aliyun.com/repository/public</url>
+    </mirror>
+  ```
+
+  3）具体步骤
+1、下载最新maven bin包，及环境变量配置
+2、创建本地仓库，修改IDEA Setting，---File--- setting ---Maven ----各个路径及勾选修改
+3、修改maven包下conf---- setting.xml相关配置，setting.xml
+4、cmd，pom.xml中测试相关配置
+
+最后遇到问题是：
+
+1. 不能自动补全包名
+   解决： Setting---Maven---Repositories----update，此时只能成功更新local ，Remote提示Error，于是只能补全仓库中已下载的依赖包
+查知，能自动补全是因为已下载依赖包索引，不同于仓库中的依赖包，update remote 即可下载
+2. remote  repository 无法更新，即无法下载中央仓库索引
+    解决：setting中注释掉使用的镜像，更新完再加上镜像。只是我的机器上如此，其他人有镜像也能更新，无法描述的问题及原因，总之，最后这样解决了问题。
+
+    本地索引位置C:\Users\Echo\.IntelliJIdea2018.2\system\Maven\Indices
+
+操作完以上，可以自动补全使用过和未使用过的依赖包了，pom中代码配置时也是使用的速度较快的阿里云仓库
+
+
+
 
