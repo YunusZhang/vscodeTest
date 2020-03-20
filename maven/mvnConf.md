@@ -36,6 +36,7 @@
 ```
 
 下面对各个元素进行解析：
+
 2.1 localRepository
 
 建构系统本地仓库的路径，不设置的话默认是在{user.home}/.m2/repository/下，如果想要系统所有用户共用一个本地仓库，则可以在maven安装目录下的setting.xml中进行设置
@@ -187,10 +188,12 @@ maven除了一般的本地仓库和中央仓库之外，还有一种是远程仓
 一.那么问题来了
 在使用idea过程中经常遇到这个问题:maven仓库索引更新错误
 索引更新不下来，在pom中写依赖的时候就无法获得提示，网上试了很多的方法，用处都不大，这索引的下载完全看心情，时好时坏，idea已经知道这个异常了，但是好像还是没有修复。所以，我决定深挖到底，看看到底是怎么回事。
+
 二.环境:win10，mac
 之前只在windows环境下找到了索引文件的位置，mac没找到，我给idea发了邮件询问linux环境下索引文件位置，但是没有回复（万恶的资本主义）。后来发现了。
 
 三.索引文件的位置
+
 windows：~/.IntelliJIdea2017.3/system/Maven
 
 mac：~/Library/Caches/IntelliJIdea2018.2/Maven
@@ -212,7 +215,9 @@ id=central
 
 index(x)文件下除了index.properties之外，还有data0，data1.。。。。这类文件，这些文件下context文件中包含的内容就是索引的关键了。
 
-参考文档：https://blog.csdn.net/zy190903/article/details/89412318
+参考文档：
+
+https://blog.csdn.net/zy190903/article/details/89412318
 https://www.cnblogs.com/lly001/p/9732201.html
 https://www.cnblogs.com/lly001/p/9732485.html
 
@@ -221,6 +226,7 @@ https://blog.csdn.net/ZZQ928000/article/details/89980916
 
 #### 2.1.4 maven仓库镜像
 参考文章：
+
 https://www.cnblogs.com/shaoke123/p/5035924.html
 https://my.oschina.net/aiguozhe/blog/101537?fromerr=kOXkYkdf
 
@@ -229,7 +235,8 @@ https://bbs.csdn.net/topics/395031552
 https://help.aliyun.com/document_detail/102512.html?spm=a2c40.aliyun_maven_repo.0.0.36183054mZ1uA6
 
 https://www.jianshu.com/p/dddc8b8c5c74
-上面是更新本地已有的索引，这样在编写pom文件的时候，可以自动提示，但如果我们能够把整个中央仓库的索引更新下来，那不是更方便啦
+
+之前是更新本地已有的索引，这样在编写pom文件的时候，可以自动提示，但如果我们能够把整个中央仓库的索引更新下来，那不是更方便啦
 
 1）更新远程仓库索引的注意事项
 * 保持网络状态良好。注意，由于中央仓库位于国外，而且索引文件大概八百多兆，请确定网络条件良好，否则很容易更新失败
@@ -261,9 +268,11 @@ https://www.jianshu.com/p/dddc8b8c5c74
 最后遇到问题是：
 
 1. 不能自动补全包名
+   
    解决： Setting---Maven---Repositories----update，此时只能成功更新local ，Remote提示Error，于是只能补全仓库中已下载的依赖包
 查知，能自动补全是因为已下载依赖包索引，不同于仓库中的依赖包，update remote 即可下载
 2. remote  repository 无法更新，即无法下载中央仓库索引
+   
     解决：setting中注释掉使用的镜像，更新完再加上镜像。只是我的机器上如此，其他人有镜像也能更新，无法描述的问题及原因，总之，最后这样解决了问题。
 
     本地索引位置C:\Users\Echo\.IntelliJIdea2018.2\system\Maven\Indices
