@@ -13,6 +13,7 @@
 # maven配置的坑
 ## 1 maven的settings.xml配置文件详解
 参考：https://www.cnblogs.com/jingmoxukong/p/6050172.html
+
 1 首先，setting.xml一般存在与两个地方：maven的安装目录/conf/，和${user.home}/.m2/下。他们的区别是在maven安装目录下的setting.xml是所有用户都可以应用的配置，而user.home下的可想而知就是针对某一用户的配置（推荐是在user.home下）。如果两个都进行了配置，则在应用的时候会将两个配置文件进行中和，而且user.home下的setting.xml优先级大于maven安装目录下的。
 
 2 setting.xml文件中顶层元素一览：
@@ -177,19 +178,25 @@ maven除了一般的本地仓库和中央仓库之外，还有一种是远程仓
 
 #### 2.1.2 pom.xml文件导包的时候不会自动提示
 1）原因：maven仓库索引没有更新
+
 2）解决办法
+
 打开Settings界面，依次找到“Build,Execution,Deployment——>Bulid Tools——>Maven——>Repositories”。
 
 点击如图update按钮，更新Maven仓库索引
+
 3）关于在个人偏好（设置）界面没有仓库索引的选项
+
 经过各种验证，是idea版本问题；2019.2版本的bug；解决办法，升级到2019.3
 
 #### 2.1.3 maven仓库索引
 一.那么问题来了
+
 在使用idea过程中经常遇到这个问题:maven仓库索引更新错误
 索引更新不下来，在pom中写依赖的时候就无法获得提示，网上试了很多的方法，用处都不大，这索引的下载完全看心情，时好时坏，idea已经知道这个异常了，但是好像还是没有修复。所以，我决定深挖到底，看看到底是怎么回事。
 
 二.环境:win10，mac
+
 之前只在windows环境下找到了索引文件的位置，mac没找到，我给idea发了邮件询问linux环境下索引文件位置，但是没有回复（万恶的资本主义）。后来发现了。
 
 三.索引文件的位置
