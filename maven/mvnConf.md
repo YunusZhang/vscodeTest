@@ -250,9 +250,13 @@ https://www.jianshu.com/p/dddc8b8c5c74
 3）具体步骤
 
 1、下载最新maven bin包，及环境变量配置
+
 2、创建本地仓库，修改IDEA Setting，---File--- setting ---Maven ----各个路径及勾选修改
+
 3、修改maven包下conf---- setting.xml相关配置，setting.xml
+
 4、cmd，pom.xml中测试相关配置
+
 
 最后遇到问题是：
 
