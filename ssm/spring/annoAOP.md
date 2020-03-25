@@ -366,6 +366,11 @@ public class TransactionManager {
 
 出现bug的原因：@After会出现在@AfterThrowing或者@AfterReturning的前面；那么当@After（释放连接）执行的时候，？？？？？？
 
+<div style="color: red">
+当@After（释放连接）执行的时候，会执行connectionUtils.removeConnection();表示把当前连接移除；那么当@AfterReturning（提交事务）再执行的时候，里面的connectionUtils.getThreadConnection()方法又会从连接池里拿一个新的连接；那么这时的连接的提交方式就是默认的自动提交；所以会出现报错；
+</div>
+
+
 解决办法：使用环绕注解，在相应的位置加入事务控制方法
 
 ```java
