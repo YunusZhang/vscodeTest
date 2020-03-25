@@ -148,6 +148,7 @@ public void QueryVo implements Seriazable{
 ```
 
 运行结果
+![](https://img-blog.csdnimg.cn/20200223192831599.jpg)
 
 
 Sql 中可将重复的 sql 提取出来，使用时用 include 引用即可，最终达到 sql 重用的目的。
@@ -171,7 +172,7 @@ Sql 中可将重复的 sql 提取出来，使用时用 include 引用即可，�
 
 # 2.Mybatis多表查询（一对多）
 本次案例主要以最为简单的用户和账户的模型来分析Mybatis多表关系。用户为User 表，账户为Account 表。一个用户（User）可以有多个账户（Account）。具体关系如下：
-
+![](https://img-blog.csdnimg.cn/20200223193033707.jpg)
 
 user表使用之前创建的，下面是account表的SQL代码：
 
@@ -200,6 +201,8 @@ insert  into `account`(`id`,`uid`,`money`) values (11,3,1000),(12,5,1000),(13,3,
 ```sql
  select u.*,a.id as aid,a.uid,a.money from account a , user u where u.id = a.uid;
 ```
+*.jpg*
+![](https://img-blog.csdnimg.cn/20200223224811192.jpg)
 
 2）定义账户信息的实体类 ，在Account类中加入User类的对象作为Account类的一个属性。
 ```java
@@ -298,7 +301,7 @@ public interface IAccountDao {
 ```
 
 运行结果如下：
-
+![](https://img-blog.csdnimg.cn/20200223222622588.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDYwMzgz,size_16,color_FFFFFF,t_70)
 
 ## 2.2 一对多查询
 需求： 查询所有用户信息及用户关联的账户信息。 分析： 用户信息和他的账户信息为一对多关系，并且查询过程中如果用户没有账户信息，此时也要将用户信息查询出来。
@@ -314,7 +317,7 @@ FROM
 LEFT JOIN account acc ON u.id = acc.uid
 ```
 
-
+![](https://img-blog.csdnimg.cn/20200223223013542.jpg)
 
 2.User类加入List< Account>
 
@@ -437,13 +440,13 @@ public interface IUserDao {
 ```
 
 运行结果
-
+![](https://img-blog.csdnimg.cn/20200223224545679.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDYwMzgz,size_16,color_FFFFFF,t_70)
 
 # 3.Mybatis多表查询（多对多）
 ## 3.1 角色到用户
 下面通过用户和角色的关系模型演示Mybatis多表查询多对多操作
 
-
+![](https://img-blog.csdnimg.cn/20200224082622823.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDYwMzgz,size_16,color_FFFFFF,t_70)
 创建角色表和用户角色中间表
 ```sql
 CREATE TABLE `role` (
@@ -476,7 +479,7 @@ select r.id as rid,r.role_name,r.role_desc,u.* from role r
 left outer join user_role ur  on r.id = ur.rid
 left outer join user u on u.id = ur.uid
 ```
-
+![](https://img-blog.csdnimg.cn/20200224091115443.jpg)
 
 2）编写角色实体类
 
@@ -579,6 +582,7 @@ public interface IRoleDao {
     }
 ```
 可以看到运行结果和前面sql查询得到结果一致
+![](https://img-blog.csdnimg.cn/20200224092524703.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDYwMzgz,size_16,color_FFFFFF,t_70)
 
 
 ## 3.2 用户到角色
@@ -621,3 +625,5 @@ public interface IRoleDao {
         }
     }
 ```
+
+![](https://img-blog.csdnimg.cn/20200224095230564.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDYwMzgz,size_16,color_FFFFFF,t_70)

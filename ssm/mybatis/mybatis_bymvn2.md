@@ -172,6 +172,7 @@ ognl表达式
 
 
 此处的selectKey并非必须，是为了演示新增用户后，返回当前新增用户的id值，因为id是由数据库的自动增长来实现的，所以就相 当于我们要在新增后将自动增长 auto_increment 的值返回。
+![](https://img-blog.csdnimg.cn/20200220221420170.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDYwMzgz,size_16,color_FFFFFF,t_70)
 
 
 3.更新操作
@@ -200,10 +201,10 @@ ognl表达式
 
 
 若使用上述配置方法，我们在配置文件中没有加入%来作为模糊查询的条件，所以在传入字符串实参时，就需要给定模糊查询的标识%。配置文件中的#{username}也只是一个占位符，所以 SQL 语句显示为“？”执行效果如下：
-
+![](https://img-blog.csdnimg.cn/20200220215634163.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDYwMzgz,size_16,color_FFFFFF,t_70)
 
 这里有两种配置方法，另一种是 select * from user where username like ‘%${value}%’
-
+![](https://img-blog.csdnimg.cn/20200220215755325.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDYwMzgz,size_16,color_FFFFFF,t_70)
 
 可以发现，我们在程序代码中就不需要加入模糊查询的匹配符%了，这两种方式的实现效果是一样的，但执行 的语句是不一样的。
 
@@ -366,6 +367,7 @@ public class MybatisTest {
 注意：
 
 1.我们在实现增删改时一定要去控制事务的提交，Sqlsession.commit();否则会出现程序通过运行，却未改变数据
+![](https://img-blog.csdnimg.cn/20200220220645653.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDYwMzgz,size_16,color_FFFFFF,t_70)
 
 # 2.SqlMapConfig.xml配置文件
 
@@ -503,3 +505,4 @@ public class QueryVo {
 ```
 
 结果如下
+![](https://img-blog.csdnimg.cn/20200221172946336.png)

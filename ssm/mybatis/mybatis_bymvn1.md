@@ -99,7 +99,7 @@ INSERT INTO `user` VALUES ('5', '王五', '2020-03-05 17:37:26', '男', '深圳'
 3、填写项目中的GroupId和ArtifactId，点击下一步
 
 4.下面是该项目的目录结构
-
+![](https://img-blog.csdnimg.cn/20200219201656494.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDYwMzgz,size_16,color_FFFFFF,t_70)
 
 在pom.xml文件中添加Mybatis3.4.5的坐标，代码如下：
 ```xml

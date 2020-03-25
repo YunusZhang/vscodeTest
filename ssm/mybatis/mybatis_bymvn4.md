@@ -35,7 +35,7 @@ collection 通常用来映射一对多的关系
 
 
 *.jpg*
-
+![](https://img-blog.csdnimg.cn/20200224113131557.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDYwMzgz,size_16,color_FFFFFF,t_70)
 
 根据mybatis官方文档可以知道，我们需要在SqlMapConfig.xml中添加延迟加载的配置，开启Mybatis延迟加载的支持
 ```xml
@@ -102,6 +102,8 @@ collection 通常用来映射一对多的关系
 # 2.mybatis缓存
 Mybatis中的缓存分为一级缓存和二级缓存
 
+![](https://img-blog.csdnimg.cn/20200224114440470.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDYwMzgz,size_16,color_FFFFFF,t_70)
+
 
 * 一级缓存：它指的是Mybatis中SqlSession对象的缓存。当我们执行查询之后，查询的结果会同时存入到SqlSession为我们提供一块区域中。该区域的结构是一个Map。当我们再次查询同样的数据，mybatis会先去sqlsession中查询是否有，有的话直接拿出来用。当SqlSession对象消失时，mybatis的一级缓存也就消失了。
 
@@ -118,6 +120,7 @@ Mybatis中的缓存分为一级缓存和二级缓存
 
 ## 2.1 一级缓存
 一级缓存是 SqlSession 范围的缓存，当调用 SqlSession 的修改，添加，删除，commit()，close()等方法时，就会清空一级缓存。
+![](https://img-blog.csdnimg.cn/20200224115102106.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDYwMzgz,size_16,color_FFFFFF,t_70)
 
 第一次发起查询用户 id 为 1 的用户信息，先去找缓存中是否有 id 为 1 的用户信息，如果没有，从数据库查 询用户信息。得到用户信息，将用户信息存储到一级缓存中。
 
@@ -130,6 +133,8 @@ Mybatis中的缓存分为一级缓存和二级缓存
 
 ## 2.2 二级缓存
 二级缓存是 mapper 映射级别的缓存，多个 SqlSession 去操作同一个 Mapper 映射的 sql 语句，多个 SqlSession 可以共用二级缓存，二级缓存是跨 SqlSession 的。
+
+![](https://img-blog.csdnimg.cn/20200224115736445.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDYwMzgz,size_16,color_FFFFFF,t_70)
 
       首先开启 mybatis 的二级缓存。
 
@@ -191,7 +196,7 @@ Mybatis中的缓存分为一级缓存和二级缓存
 ```
 
 
-
+![](https://img-blog.csdnimg.cn/2020022414010640.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDYwMzgz,size_16,color_FFFFFF,t_70)
 经过上面的测试，我们发现执行了两次查询，并且在执行第一次查询后，我们关闭了一级缓存，再去执行第二 次查询时，我们发现并没有对数据库发出 sql 语句，所以此时的数据就只能是来自于我们所说的二级缓存。
 
 # 3.mybatis注解开发
@@ -685,8 +690,9 @@ public class AnnocationTest {
 ```
 
 运行结果：
+![](https://img-blog.csdnimg.cn/20200224210327227.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDYwMzgz,size_16,color_FFFFFF,t_70)
 
-
+![](https://img-blog.csdnimg.cn/20200224210351557.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxNDYwMzgz,size_16,color_FFFFFF,t_70)
 
 ## 3.3 mybatis基于注解的二级缓存
 
